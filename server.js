@@ -21,7 +21,7 @@ const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGODB_URL ||
-    db,{
+    process.env.MONGODB_URI || 'mongodb://user:password123@ds151626.mlab.com:51626/heroku_whnb1d1j',{
     useUnifiedTopology: true,                
     useNewUrlParser: true
   }
@@ -42,8 +42,8 @@ app.get('/', (req, res) => res.send('This is backend Server for Spritle App!'));
 const port = process.env.PORT || 5000;
 
 
-if( process.env.NODE_ENV === 'production'){
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
-} 
+}
 
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));
