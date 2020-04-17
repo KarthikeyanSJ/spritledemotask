@@ -37,7 +37,7 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
-app.get('/', (req, res) => res.send('This is backend Server for Spritle App!'));
+
 
 const port = process.env.PORT || 5000;
 
